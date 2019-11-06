@@ -54,7 +54,7 @@ class Vendedor{
 	}
 	
 	method certificadosDeProductos(){
-		return certificaciones.map({cert => cert.sonDeProductos()})
+		return certificaciones.filter({cert => cert.sonDeProductos()})
 	}
 	
 	method esVendedorFijo() = false

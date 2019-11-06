@@ -25,7 +25,7 @@ class CentrosDistribucion{
 	}
 	
 	method vendedoresGenericos(){
-		return vendedores.map({vent => vent.esGenerico()}).asSet()
+		return vendedores.filter({vent => vent.esGenerico()}).asSet()
 	}
 	
 	method esRobusto(){
@@ -33,7 +33,7 @@ class CentrosDistribucion{
 	}
 	
 	method vendedoresFirmes(){
-		return vendedores.map({vent => vent.esFirme()}).asSet()
+		return vendedores.filter({vent => vent.esFirme()}).asSet()
 	}
 	
 	method repartirCertificado(cert){
