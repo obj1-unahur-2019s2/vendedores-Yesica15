@@ -48,6 +48,17 @@ class Vendedor{
 	method tieneAfinidad(centro){
 		return self.puedeTrabajar(centro.ciudad())		
 	}
+	
+	method esCandidato(centro){
+		return self.esVersatil() and self.tieneAfinidad(centro)
+	}
+	
+	method certificadosDeProductos(){
+		return certificaciones.map({cert => cert.sonDeProductos()})
+	}
+	
+	method esVendedorFijo() = false
+	method esVendedorViajante() = false
 }
 
 class VendedorFijo inherits Vendedor{
@@ -58,6 +69,8 @@ class VendedorFijo inherits Vendedor{
 	}
 	
 	override method esInfluyente(){ return false}
+	
+	override method esVendedorFijo() = true
 }
 
 class VendedorViajante inherits Vendedor{
@@ -72,6 +85,8 @@ class VendedorViajante inherits Vendedor{
 	method poblacionQueInfluencia(){
 		return provinciasHabilitadas.sum({per => per.poblacion()})
 	}
+	
+	override method esVendedorViajante() = true
 }
 
 class ComercioCorresponsal inherits Vendedor{
